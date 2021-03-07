@@ -56,38 +56,6 @@ func PostUser(userUsecase *usecase.User, logger *logrus.Logger) http.HandlerFunc
 			return
 		}
 
-		///* TODO: 以下の処理をusecaseとrepositoryに移す */
-		//// 3. データが正当かどうかのチェックを行う
-		//// emailによりuserの存在チェックを行う
-		//var id int
-		//err = db.GetContext(ctx, &id, "SELECT id from users where email = ?", user.Email)
-		//
-		//if err != nil && err != sql.ErrNoRows { // sql.ErrNoRows以外のerrorが発生しているケース
-		//	logger.Warnf("select failed: %+v", err)
-		//	writeError(w, http.StatusInternalServerError, apierr.ErrInternalServerError)
-		//	return
-		//} else if err == nil { // errが発生していないケース、つまりuserが存在しているケース
-		//	writeError(w, http.StatusBadRequest, apierr.ErrEmailAlreadyExists)
-		//	return
-		//}
-		//
-		//// 4. DBへのinsert
-		//rs, err := db.ExecContext(ctx, "INSERT INTO users(first_name, last_name, email, password_hash) VALUES (?, ?, ?, ?)", user.FirstName, user.LastName, user.Email, string(hash))
-		//if err != nil {
-		//	logger.Errorf("insert failed: %+v", err)
-		//	writeError(w, http.StatusInternalServerError, apierr.ErrInternalServerError)
-		//	return
-		//}
-		//
-		//// responseにUserIDを返すために、ResultSetからIDを取得する
-		//insertedId, err := rs.LastInsertId()
-		//if err != nil {
-		//	logger.Errorf("lastInsertId failed: %+v", err)
-		//	writeError(w, http.StatusInternalServerError, apierr.ErrInternalServerError)
-		//	return
-		//}
-		///* ここまで */
-
 		//// 3. データが正当かどうかのチェックを行う
 		m := &model.User{
 			FirstName:    user.FirstName,
